@@ -172,7 +172,7 @@ if (isset($_POST["taikhoan"])) {
                             </div>
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">
-                                    <input type="text" name="matkhau"
+                                    <input type="password" name="matkhau"
                                            class="form-control form-control-lg form-control-a"
                                            placeholder="Mật khẩu" data-rule="required"
                                            data-msg="Không được bỏ trống">

@@ -1,6 +1,4 @@
 <?php
-ob_start();
-session_start();
 
 include "consts.php";
 include "login_auth.php";
@@ -56,6 +54,8 @@ if (isset($_POST["add"])) {
         $err = implode(", ", $err);
         $err = json_encode($err);
         echo "<script type='text/javascript'>alert('$err')</script>";
+    } else {
+        header("Location: dashboard_product_add.php");
     }
 }
 

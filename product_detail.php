@@ -185,7 +185,10 @@ if ($_GET["hh"]) {
                                     <input type="hidden" name="MSHH" value="<?php echo $hh[0] ?>">
                                     <input type="hidden" name="TenHH" value="<?php echo $hh[1] ?>">
                                     <input type="hidden" name="Gia" value="<?php echo $hh[2] ?>">
+                                    <input type="hidden" name="SoLuongHang" value="<?php echo $hh[3] ?>">
+                                    <input type="hidden" name="MaNhom" value="<?php echo $hh[4] ?>">
                                     <input type="hidden" name="Hinh" value="<?php echo $hh[5] ?>">
+                                    <input type="hidden" name="MoTaHH" value="<?php echo $hh[6] ?>">
                                     <input type="hidden" name="SoLuong" value=1>
                                     <button type="submit" id="submitCart" class="btn btn-a">Thêm vào giỏ hàng</button>
                                 </div>

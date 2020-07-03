@@ -23,6 +23,7 @@ if (!isset($_SESSION["products"]) || count($_SESSION["products"]) <= 0) {
         $ctDH = new ChiTietDatHang($conn);
         $dh = new DatHang($conn);
         $kh = new KhachHang($conn);
+        $hangHoa = new HangHoa($conn);
 
         $kh->themKhachHang($_POST["HoTenKH"], $_POST["DiaChi"], $_POST["SoDienThoai"]);
         $mskh = $kh->timKhachHang($_POST["HoTenKH"], $_POST["DiaChi"], $_POST["SoDienThoai"])[0][0];
@@ -33,10 +34,12 @@ if (!isset($_SESSION["products"]) || count($_SESSION["products"]) <= 0) {
             $soDonDH = $dh->timDatHang($mskh, $ngay)[0][0];
             foreach ($dsHH as $hh) {
                 $totalPrice += $hh['Gia'] * $hh['SoLuong'];
+                $slMoi = $hh["SoLuongHang"] - $hh["SoLuong"];
+                $hangHoa->capNhatHangHoa($hh["MSHH"], $hh["TenHH"], $hh["Gia"], $slMoi, $hh["MaNhom"], $hh["Hinh"], $hh["MoTaHH"]);
                 $ctDH->themChiTietDatHang($soDonDH, $hh["MSHH"], $hh["SoLuong"], $hh["Gia"] * $hh["SoLuong"]);
             }
 
-            session_unset();
+            $_SESSION["products"] = null;
             header("Location: product.php");
 
         }

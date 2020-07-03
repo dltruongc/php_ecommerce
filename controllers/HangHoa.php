@@ -20,6 +20,8 @@ class HangHoa
         if (!$result) {
             array_push($this->errorArray, "Thêm hàng hóa thất bại");
         }
+        array_push($this->errorArray, $q);
+
         return $this->errorArray;
     }
 

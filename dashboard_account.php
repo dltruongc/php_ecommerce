@@ -92,7 +92,7 @@ if (isset($_POST["add"])) {
                     <a class="nav-link" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=product.php">Sản phẩm</a>
+                    <a class="nav-link" href="product.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"

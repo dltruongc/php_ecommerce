@@ -22,8 +22,10 @@ if (isset($_POST["MSHH"])) {
 
     $product["TenHH"] = $result[1];
     $product["Gia"] = (int) $result[2];
-    $product["SoLuong"] = (int) $result[2];
-    $product["MSHH"] = (int) $result[0];
+    $product["SoLuongHang"] = (int) $result[3];
+    $product["MaNhom"] = $result[4];
+    $product["Hinh"] = $result[5];
+    $product["MoTaHH"] = $result[6];
 
     if (isset($_SESSION["products"])) {
         if (isset($_SESSION["products"][$product['MSHH']])) {
