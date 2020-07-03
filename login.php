@@ -20,7 +20,7 @@ if (isset($_POST["taikhoan"])) {
     } else {
         $dangNhapOK = $taikhoan->dangNhap($tentaikhoan, $matkhau);
         if ($dangNhapOK != false)
-        header("Location: http://localhost/shop/dashboard.php/");
+        header("Location: dashboard.php");
     }
 
 }
@@ -82,13 +82,16 @@ if (isset($_POST["taikhoan"])) {
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                                                                       class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]);
+                            } ?></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="register.php">Đăng ký</a>
                 </li>
             </ul>
         </div>

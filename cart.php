@@ -59,14 +59,17 @@ session_start();
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                                                                       class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]);
+                            } ?></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="register.php">Đăng ký</a>
                 </li>
             </ul>
         </div>
@@ -159,14 +162,14 @@ session_start();
     <div class="container ">
         <div class="row">
             <div class="col-md-6 title-a">
-                <?php if(isset($totalPrice) && !empty($totalPrice)) {
-                    echo "Tổng: <span id='totalPrice'>". $totalPrice . "</span>";
-                }?>
+                <?php if (isset($totalPrice) && !empty($totalPrice)) {
+                    echo "Tổng: <span id='totalPrice'>" . $totalPrice . "</span>";
+                } ?>
             </div>
             <div class="col-md-6 ">
-                <?php if(isset($totalPrice) && !empty($totalPrice)) {
+                <?php if (isset($totalPrice) && !empty($totalPrice)) {
                     echo "<button class=\"d-float float-right btn btn-lg btn-outline-dark\"><a href=\"checkout.php\">Thanh toán</a></button>";
-                }?>
+                } ?>
             </div>
         </div>
     </div>

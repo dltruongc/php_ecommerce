@@ -2048,3 +2048,7 @@ footer .credits {
 .bg-contain {
   background-size: contain;
 }
+
+.pointer-cursor:hover{
+  cursor: pointer;
+}

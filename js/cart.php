@@ -17,5 +17,4 @@ $(".cartForm").submit(function(e){
         $("#top-cart-counter").text(`${data.results}`);
         button_content.html('Thêm vào giỏ hàng');
     });
-
 });

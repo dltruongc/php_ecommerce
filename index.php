@@ -1,4 +1,8 @@
 <?php
+
+ob_start();
+session_start();
+
 include "sql.php";
 include "controllers/HangHoa.php";
 
@@ -64,13 +68,16 @@ $hangHoaMoi = $hangHoa->xemHangHoaMoi(9);
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                                                                       class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]);
+                            } ?></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="register.php">Đăng ký</a>
                 </li>
             </ul>
         </div>
@@ -96,7 +103,9 @@ $hangHoaMoi = $hangHoa->xemHangHoaMoi(9);
                                                         $hh[1]
                                                         <br></h1>
                                                     <p class='intro-subtitle intro-price'>
-                                                        <a href='#'><span class='price-a'>Giá | $ $hh[2]</span></a>
+                                                        <a href='product_detail.php?hh=$hh[0]'>
+                                                            <span class='price-a'>Giá | $ $hh[2]</span>
+                                                        </a>
                                                     </p>
                                             </div>
                                         </div>
@@ -155,7 +164,7 @@ $hangHoaMoi = $hangHoa->xemHangHoaMoi(9);
                     </div>
                     <div class="card-body-c">
                         <p class="content-c text-justify">
-                        Thiết kế các chỉ mục hợp lý giúp tăng tốc độ tra cứu sản phẩm. Sự nhanh chóng còn thể hiện ở
+                            Thiết kế các chỉ mục hợp lý giúp tăng tốc độ tra cứu sản phẩm. Sự nhanh chóng còn thể hiện ở
                             việc thực hiện thanh toán bằng các dịch vụ e-pay tiện dụng.
                         </p>
                     </div>
@@ -214,12 +223,14 @@ $hangHoaMoi = $hangHoa->xemHangHoaMoi(9);
                                 <div class='card-overlay-a-content'>
                                     <div class='card-header-a'>
                                         <h2 class='card-title-a'>
-                                            <a href='#'>$hh[1]
+                                            <a href='product_detail.php?hh=$hh[0]'>$hh[1]
                                         </h2>
                                     </div>
                                     <div class='card-body-a'>
                                         <div class='price-box d-flex'>
-                                            <span class='price-a'>Giá | $ $hh[2]</span>
+                                            <a href='product_detail.php?hh=$hh[0]' class='link-a price-a'>
+                                                <span>Giá | $ $hh[2]</span>
+                                            </a>
                                         </div>
                                         <a href='product_detail.php?hh=$hh[0]' class='link-a'>Click here to view
                                             <span class='ion-ios-arrow-forward'></span>

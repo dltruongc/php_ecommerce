@@ -3,8 +3,7 @@ ob_start();
 session_start();
 
 include_once "consts.php";
-
-include "sql.php";
+include "login_auth.php";
 include "controllers/HangHoa.php";
 
 $hangHoa = new HangHoa($conn);
@@ -63,19 +62,22 @@ $results = $hangHoa->xemHangHoa();
                     <a class="nav-link" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="property-grid.html">Sản phẩm</a>
+                    <a class="nav-link" href="product.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                                                                       class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]);
+                            } ?></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="logout.php">Đăng xuất</a>
                 </li>
             </ul>
         </div>

@@ -66,21 +66,21 @@ if ($_GET["hh"]) {
                     <a class="nav-link" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="property-grid.html">Sản phẩm</a>
+                    <a class="nav-link active" href="product.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">Giới thiệu</a>
 
                 <li class="nav-item">
-                    <a class="nav-link"  href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
                                 class="badge badge-info"><?php if (isset($_SESSION["products"])) {
                                 echo count($_SESSION["products"]); } ?></span></a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="register.php">Đăng ký</a>
                 </li>
             </ul>
         </div>

@@ -2,7 +2,6 @@
 ob_start();
 session_start();
 
-include "consts.php";
 include "sql.php";
 include "controllers/HangHoa.php";
 
@@ -72,13 +71,16 @@ if (isset($_GET["q"])) {
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                                                                       class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]);
+                            } ?></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="register.php">Đăng ký</a>
                 </li>
             </ul>
         </div>
@@ -100,7 +102,7 @@ if (isset($_GET["q"])) {
                 <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#">Home</a>
+                            <a href="index.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             Product
@@ -139,12 +141,14 @@ if (isset($_GET["q"])) {
                                 <div class='card-overlay-a-content'>
                                     <div class='card-header-a'>
                                         <h2 class='card-title-a'>
-                                            <a href='#'>$hh[1]
+                                            <a href='product_detail.php?hh=$hh[0]'>$hh[1]
                                         </h2>
                                     </div>
                                     <div class='card-body-a'>
                                         <div class='price-box d-flex'>
-                                            <span class='price-a'>Giá | $ $hh[2]</span>
+                                            <a href='product_detail.php?hh=$hh[0]' class='link-a price-a'>
+                                                <span>Giá | $ $hh[2]</span>
+                                            </a>
                                         </div>
                                         <a href='product_detail.php?hh=$hh[0]' class='link-a'>Click here to view
                                             <span class='ion-ios-arrow-forward'></span>

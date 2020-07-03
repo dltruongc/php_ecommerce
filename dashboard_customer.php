@@ -3,7 +3,7 @@ ob_start();
 session_start();
 
 include "consts.php";
-include "sql.php";
+include "login_auth.php";
 include "controllers/KhachHang.php";
 
 $err = array();
@@ -93,28 +93,31 @@ if (isset($_POST["add"])) {
                     <a class="nav-link" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="property-grid.html">Sản phẩm</a>
+                    <a class="nav-link" href="product.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
+                                                                       class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]);
+                            } ?></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
+                    <a class="nav-link" href="contact.html">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
+                    <a class="nav-link" href="logout.php">Đăng xuất</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-/ Nav End /
+<!--/ Nav End /-->
 
 
-/ Intro Single star /
+<!--/ Intro Single star /-->
 <section class="intro-single">
     <div class="container">
         <div class="row">
@@ -163,7 +166,6 @@ if (isset($_POST["add"])) {
             </div>
         </div>
     </div>
-    </div>
 </section>
 
 
@@ -189,13 +191,16 @@ if (isset($_POST["add"])) {
                             <tr class="table-active">
                                 <th scope="row">?</th>
                                 <td scope="row">
-                                    <input class="form-control form-text" type="text" placeholder="Họ tên khách hàng" name="HoTenKH">
+                                    <input class="form-control form-text" type="text" placeholder="Họ tên khách hàng"
+                                           name="HoTenKH">
                                 </td>
                                 <td>
-                                    <input class="form-control form-text" type="text" name="DiaChi" placeholder="Địa chỉ">
+                                    <input class="form-control form-text" type="text" name="DiaChi"
+                                           placeholder="Địa chỉ">
                                 </td>
                                 <td>
-                                    <input class="form-control form-text" type="text" name="SoDienThoai" placeholder="Số điện thoại">
+                                    <input class="form-control form-text" type="text" name="SoDienThoai"
+                                           placeholder="Số điện thoại">
                                 </td>
                                 <td>
                                     <input name="add" value='Thêm' type='submit' class='btn btn-info'>
