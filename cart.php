@@ -58,7 +58,7 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">Giới thiệu</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
                                                                        class="badge badge-info"><?php if (isset($_SESSION["products"])) {
                                 echo count($_SESSION["products"]);

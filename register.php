@@ -98,6 +98,9 @@ if (isset($_POST["taikhoan"])) {
                     <a class="nav-link" href="product.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="about.html">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="cart.php">Giỏ hàng <span id="top-cart-counter"
                                                                        class="badge badge-info"><?php if (isset($_SESSION["products"])) {
                                 echo count($_SESSION["products"]);
