@@ -2,6 +2,7 @@
 
 ob_start();
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -101,123 +102,71 @@ session_start();
 <!--/ Property Star /-->
 <section class="section-property">
     <div class="container">
-        <div class="row bg-light py-4 mb-3">
-            <div class="col-md-3">
-                <img src="img/about-1.jpg" alt="" width="100" height="100">
-            </div>
-            <div class="col-md-3">
-                <div class="font-weight-bold">Sản phẩm: <span class="font-weight-normal">Apple Watch</span>
-                </div>
-                <div class="font-weight-bold">Đơn giá: <span class="font-weight-normal">15000đ</span></div>
-            </div>
+        <?php
+        if (!isset($_SESSION["products"]) || count($_SESSION["products"]) <= 0) {
+            ?>
+            <h1 class="title-a">
+                Chưa có sản phẩm
+            </h1>
+        <?php } else {
+            $dsHH = $_SESSION["products"];
+            $totalPrice = 0;
+            foreach ($dsHH as $hh) {
+                $totalPrice += $hh['Gia'] * $hh['SoLuong'];
+            }
+            foreach ($dsHH as $hh) {
+                ?>
+                <div class="row bg-light py-4 mb-3">
+                    <div class="col-md-3">
+                        <img src="<?php echo $hh['Hinh']; ?>" alt="" width="100" height="100">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="font-weight-bold">Sản phẩm: <span
+                                    class="font-weight-normal"><?php echo $hh['TenHH']; ?></span>
+                        </div>
+                        <div class="font-weight-bold">Đơn giá: <span
+                                    class="font-weight-normal" id='price<?php echo $hh['MSHH']; ?>'>
+                            <?php echo $hh['Gia']; ?></span><span class="font-weight-normal">đ</span></div>
+                    </div>
 
-            <div class="col-md-3">
-                <div class="font-weight-bold form-group">
-                    <label for="count1">Số lượng:</label>
-                    <form action="cart.php" method="post" class="form-inline">
-                        <button class="form-control btn btn-dark">-</button>
-                        <input id="count1" class="mx-1 col-sm-3 form-control font-weight-bold"
-                               type="text" value="12" readonly>
-                        <button class="form-control btn btn-dark">+</button>
-                    </form>
-                </div>
-            </div>
+                    <div class="col-md-3">
+                        <div class="font-weight-bold form-group">
+                            <label for="count1">Số lượng:</label>
+                            <form class="form-inline">
+                                <input type="button" class="form-control btn btn-dark"
+                                       onclick="decrement(<?php echo $hh["MSHH"] ?>)" value="-">
+                                <input id="count<?php echo $hh["MSHH"] ?>"
+                                       class="mx-1 col-sm-3 form-control font-weight-bold"
+                                       type="text" value="<?php echo $hh["SoLuong"]; ?>" readonly>
+                                <input type="button" class="form-control btn btn-dark"
+                                       onclick="increment(<?php echo $hh["MSHH"] ?>)" value="+">
+                            </form>
+                        </div>
+                    </div>
 
-            <div class="col-md-3" style="font-size: 1.3em">
-                <div class="font-weight-bold">Thành tiền: <span
-                            class="font-weight-normal">150000đ</span></div>
-            </div>
-        </div>
-        <div class="row bg-light py-4 mb-3">
-            <div class="col-md-3">
-                <img src="img/about-1.jpg" alt="" width="100" height="100">
-            </div>
-            <div class="col-md-3">
-                <div class="font-weight-bold">Sản phẩm: <span class="font-weight-normal">Apple Watch</span>
+                    <div class="col-md-3" style="font-size: 1.3em">
+                        <div class="font-weight-bold">Thành tiền: <span
+                                    class="font-weight-normal"
+                                    id="totalPrice<?php echo $hh['MSHH'] ?>"><?php echo $hh['Gia'] * $hh['SoLuong'] ?>đ</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="font-weight-bold">Đơn giá: <span class="font-weight-normal">15000đ</span></div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="font-weight-bold form-group">
-                    <label for="count1">Số lượng:</label>
-                    <form action="cart.php" method="post" class="form-inline">
-                        <button class="form-control btn btn-dark">-</button>
-                        <input id="count1" class="mx-1 col-sm-3 form-control font-weight-bold"
-                               type="text" value="12" readonly>
-                        <button class="form-control btn btn-dark">+</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="font-size: 1.3em">
-                <div class="font-weight-bold">Thành tiền: <span
-                            class="font-weight-normal">150000đ</span></div>
-            </div>
-        </div>
-        <div class="row bg-light py-4 mb-3">
-            <div class="col-md-3">
-                <img src="img/about-1.jpg" alt="" width="100" height="100">
-            </div>
-            <div class="col-md-3">
-                <div class="font-weight-bold">Sản phẩm: <span class="font-weight-normal">Apple Watch</span>
-                </div>
-                <div class="font-weight-bold">Đơn giá: <span class="font-weight-normal">15000đ</span></div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="font-weight-bold form-group">
-                    <label for="count1">Số lượng:</label>
-                    <form action="cart.php" method="post" class="form-inline">
-                        <button class="form-control btn btn-dark">-</button>
-                        <input id="count1" class="mx-1 col-sm-3 form-control font-weight-bold"
-                               type="text" value="12" readonly>
-                        <button class="form-control btn btn-dark">+</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="font-size: 1.3em">
-                <div class="font-weight-bold">Thành tiền: <span
-                            class="font-weight-normal">150000đ</span></div>
-            </div>
-        </div>
-        <div class="row bg-light py-4 mb-3">
-            <div class="col-md-3">
-                <img src="img/about-1.jpg" alt="" width="100" height="100">
-            </div>
-            <div class="col-md-3">
-                <div class="font-weight-bold">Sản phẩm: <span class="font-weight-normal">Apple Watch</span>
-                </div>
-                <div class="font-weight-bold">Đơn giá: <span class="font-weight-normal">15000đ</span></div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="font-weight-bold form-group">
-                    <label for="count1">Số lượng:</label>
-                    <form action="cart.php" method="post" class="form-inline">
-                        <button class="form-control btn btn-dark">-</button>
-                        <input id="count1" class="mx-1 col-sm-3 form-control font-weight-bold"
-                               type="text" value="12" readonly>
-                        <button class="form-control btn btn-dark">+</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="font-size: 1.3em">
-                <div class="font-weight-bold">Thành tiền: <span
-                            class="font-weight-normal">150000đ</span></div>
-            </div>
-        </div>
+                <?php
+            }
+        } ?>
     </div>
 
     <div class="container ">
         <div class="row">
             <div class="col-md-6 title-a">
-                Tổng: 6000000đ
+                <?php if(isset($totalPrice) && !empty($totalPrice)) {
+                    echo "Tổng: <span id='totalPrice'>". $totalPrice . "</span>";
+                }?>
             </div>
             <div class="col-md-6 ">
-                <button class="d-float float-right btn btn-lg btn-outline-dark">Thanh toán</button>
+                <?php if(isset($totalPrice) && !empty($totalPrice)) {
+                    echo "<button class=\"d-float float-right btn btn-lg btn-outline-dark\"><a href=\"checkout.php\">Thanh toán</a></button>";
+                }?>
             </div>
         </div>
     </div>
@@ -356,7 +305,7 @@ session_start();
 <script src="lib/scrollreveal/scrollreveal.min.js"></script>
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>
-<script src="js/cart.js"></script>
+<script src="js/cart.php"></script>
 </body>
 
 </html>

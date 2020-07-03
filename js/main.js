@@ -148,3 +148,30 @@
 	});
 
 })(jQuery);
+
+function decrement(id) {
+	let input = document.querySelector(`#count${id}`);
+	if (input.value > 0) {
+		input.value -= 1;
+		let priceX = parseInt(document.querySelector(`#price${id}`).innerHTML);
+		let totalPriceX = document.querySelector(`#totalPrice${id}`);
+		let totalPrice = document.querySelector(`#totalPrice`);
+
+		totalPriceX.innerHTML = `${(parseInt(input.value) * priceX)}đ`;
+		totalPrice.innerHTML =  `${(parseInt(totalPrice.innerHTML) - priceX)}đ`;
+	}
+
+}
+
+function increment(id) {
+	let input = document.querySelector(`#count${id}`);
+	input.value = parseInt(input.value) + 1;
+
+	let priceX = parseInt(document.querySelector(`#price${id}`).innerHTML);
+
+	let totalPriceX = document.querySelector(`#totalPrice${id}`);
+	let totalPrice = document.querySelector(`#totalPrice`);
+
+	totalPriceX.innerHTML = `${(parseInt(input.value) * priceX)}đ`;
+	totalPrice.innerHTML =  `${(parseInt(totalPrice.innerHTML) + priceX)}đ`;
+}

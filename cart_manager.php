@@ -37,6 +37,6 @@ if (isset($_POST["MSHH"])) {
         $_SESSION["products"][$product['MSHH']]["SoLuong"] = $_POST["SoLuong"];
     }
     $count_product = count($_SESSION["products"]);
-    die(json_encode(array('results' => $count_product, "products" => $product)));
+    die(json_encode(array('results' => $count_product, "products" => $_SESSION["products"])));
 }
 ?>

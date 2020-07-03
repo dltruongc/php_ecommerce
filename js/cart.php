@@ -1,3 +1,8 @@
+<?php ob_start(); session_start(); ?>
+
+<?php
+header("Content-type: application/javascript"); ?>
+
 $(".cartForm").submit(function(e){
     e.preventDefault();
     var form_data = $(this).serialize();
@@ -9,9 +14,8 @@ $(".cartForm").submit(function(e){
         dataType:"json",
         data: form_data
     }).done(function(data){
-        $(".cart-container").html(JSON.stringify(data));
-        console.log(data);
-        button_content.html('Add to Cart');
+        $("#top-cart-counter").text(`${data.results}`);
+        button_content.html('Thêm vào giỏ hàng');
     });
 
 });

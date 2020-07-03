@@ -72,7 +72,7 @@ if ($_GET["hh"]) {
                     <a class="nav-link" href="about.html">Giới thiệu</a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng <span
+                    <a class="nav-link"  href="cart.php">Giỏ hàng <span id="top-cart-counter"
                                 class="badge badge-info"><?php if (isset($_SESSION["products"])) {
                                 echo count($_SESSION["products"]); } ?></span></a>
 
@@ -185,6 +185,7 @@ if ($_GET["hh"]) {
                                     <input type="hidden" name="MSHH" value="<?php echo $hh[0] ?>">
                                     <input type="hidden" name="TenHH" value="<?php echo $hh[1] ?>">
                                     <input type="hidden" name="Gia" value="<?php echo $hh[2] ?>">
+                                    <input type="hidden" name="Hinh" value="<?php echo $hh[5] ?>">
                                     <input type="hidden" name="SoLuong" value=1>
                                     <button type="submit" id="submitCart" class="btn btn-a">Thêm vào giỏ hàng</button>
                                 </div>
@@ -330,7 +331,7 @@ if ($_GET["hh"]) {
 <script src="lib/scrollreveal/scrollreveal.min.js"></script>
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>
-<script src="js/cart.js"></script>
+<script src="js/cart.php"></script>
 </body>
 </html>
 

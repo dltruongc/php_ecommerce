@@ -25,6 +25,15 @@ class KhachHang
         return $this->errorArray;
     }
 
+
+    public function timKhachHang($hoten, $diachi, $sdt)
+    {
+        $q = "SELECT * FROM KhachHang WHERE HoTenKH LIKE '$hoten' AND DiaChi LIKE '%$diachi%' AND SoDienThoai LIKE '$sdt';";
+
+        $result = $this->conn->query($q);
+        return $result->fetch_all();
+    }
+
     public function xoaKhachHang($ma)
     {
         $q = "DELETE FROM KhachHang WHERE MSKH = $ma;";

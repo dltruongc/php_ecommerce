@@ -79,4 +79,13 @@ class DatHang
             return [];
         } else return $res->fetch_all();
     }
+    public function timDatHang($kh, $ngay)
+    {
+        $q = "SELECT * FROM DatHang WHERE MSKH=$kh and NgayDH='$ngay';";
+
+        $res = $this->conn->query($q);
+        if ($res == false) {
+            return [];
+        } else return $res->fetch_all();
+    }
 }
