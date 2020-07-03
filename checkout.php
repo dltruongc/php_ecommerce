@@ -1,4 +1,8 @@
 <?php
+
+ob_start();
+session_start();
+
 include "sql.php";
 include "controllers/HangHoa.php";
 
@@ -31,47 +35,110 @@ include "controllers/HangHoa.php";
 </head>
 
 <body>
-
-<!--/ Nav Start /-->
-<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <a class="navbar-brand text-brand" href="index.php">Apple<span class="color-b">Store</span></a>
-        <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none"
-                data-toggle="collapse"
-                data-target="#navbarTogglerDemo01" aria-expanded="false">
-            <span class="fa fa-search" aria-hidden="true"></span>
-        </button>
-        <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="product.php">Sản phẩm</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">Giới thiệu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Đăng ký</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!--/ Nav End /-->
+<?php
+if(isset($_SESSION["products"]) && count($_SESSION["products"])>0){
+$total = 0;
+$list_tax = '';
+?>
+<table class="table" id="shopping-cart-results">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    $cart_box = '';
+    foreach($_SESSION["products"] as $product){
+        $product_name = $product["TenHH"];
+        $product_qty = $product["SoLuong"];
+        $product_price = $product["Gia"];
+        $product_code = $product["MSHH"];
+        $item_price = sprintf("%01.2f",($product_price * $product_qty));
+        ?>
+        <tr>
+            <td><?php echo $product_name; echo "—";?></td>
+            <td><?php echo $product_price; ?></td>
+            <td><?php echo $product_qty; ?></td>
+            <td><?php echo 0.126; echo sprintf("%01.2f", ($product_price * $product_qty)); ?></td>
+            <td> </td>
+        </tr>
+        <?php
+        $subtotal = ($product_price * $product_qty);
+        $total = ($total + $subtotal);
+    }
+    $grand_total = $total + 0.5;
+//    foreach($taxes as $key => $value){
+//        $tax_amount = round($total * ($value / 100));
+//        $tax_item[$key] = $tax_amount;
+//        $grand_total = $grand_total + $tax_amount;
+//    }
+//    foreach($tax_item as $key => $value){
+//        $list_tax .= $key. ' : '. 0.125. sprintf("%01.2f", $value).'<br />';
+//    }
+    $shipping_cost = (0.5)?'Shipping Cost : ' . 0.125. sprintf("%01.2f", 0.5).'<br />':'';
+    $cart_box .= "<span>$shipping_cost $list_tax <hr>Payable Amount : 0.125 ".sprintf("%01.2f", $grand_total)."</span>";
+    ?>
+    <tfoot>
+    <tr>
+        <td><br><br><br><br><br><br><a href="index.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Continue Shopping</a></td>
+        <td> </td>
+        <td> </td>
+        <td class="text-center view-cart-total"><strong><?php echo $cart_box; ?></strong></td>
+        <td><br><br><br><br><br><br><a href="success.php" class="btn btn-success btn-block">Place Order <i class="glyphicon glyphicon-menu-right"></i></a></td>
+    </tr>
+    </tfoot>
+    <?php
+    } else {
+        echo "Your Cart is empty";
+    }
+    ?>
+    </tbody>
+</table>
+<!--<!--/ Nav Start /-->-->
+<!--<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">-->
+<!--    <div class="container">-->
+<!--        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"-->
+<!--                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--        </button>-->
+<!--        <a class="navbar-brand text-brand" href="index.php">Apple<span class="color-b">Store</span></a>-->
+<!--        <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none"-->
+<!--                data-toggle="collapse"-->
+<!--                data-target="#navbarTogglerDemo01" aria-expanded="false">-->
+<!--            <span class="fa fa-search" aria-hidden="true"></span>-->
+<!--        </button>-->
+<!--        <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">-->
+<!--            <ul class="navbar-nav">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="index.php">Trang chủ</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="product.php">Sản phẩm</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="about.html">Giới thiệu</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="cart.php">Giỏ hàng</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="blog-grid.html">Liên hệ</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="contact.html">Đăng ký</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<!--/ Nav End /-->-->
 
 <!--/ Intro Single star /-->
 <section class="intro-single">

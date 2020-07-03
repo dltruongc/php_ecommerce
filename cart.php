@@ -1,7 +1,7 @@
 <?php
-include "sql.php";
-include "controllers/HangHoa.php";
 
+ob_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,6 @@ include "controllers/HangHoa.php";
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -357,6 +356,7 @@ include "controllers/HangHoa.php";
 <script src="lib/scrollreveal/scrollreveal.min.js"></script>
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>
+<script src="js/cart.js"></script>
 </body>
 
 </html>

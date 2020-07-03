@@ -1,5 +1,3 @@
-
-
 <?php
 ob_start();
 session_start();
@@ -74,7 +72,9 @@ if ($_GET["hh"]) {
                     <a class="nav-link" href="about.html">Giới thiệu</a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.php">Giỏ hàng <span
+                                class="badge badge-info"><?php if (isset($_SESSION["products"])) {
+                                echo count($_SESSION["products"]); } ?></span></a>
 
                 <li class="nav-item">
                     <a class="nav-link" href="blog-grid.html">Liên hệ</a>
@@ -179,10 +179,14 @@ if ($_GET["hh"]) {
                             <br>
                         </div>
 
-                        <form class="form-a contactForm" action="cart.php" method="post">
+                        <form class="form-a cartForm">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-a">Thêm vào giỏ hàng</button>
+                                    <input type="hidden" name="MSHH" value="<?php echo $hh[0] ?>">
+                                    <input type="hidden" name="TenHH" value="<?php echo $hh[1] ?>">
+                                    <input type="hidden" name="Gia" value="<?php echo $hh[2] ?>">
+                                    <input type="hidden" name="SoLuong" value=1>
+                                    <button type="submit" id="submitCart" class="btn btn-a">Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         </form>
@@ -326,6 +330,7 @@ if ($_GET["hh"]) {
 <script src="lib/scrollreveal/scrollreveal.min.js"></script>
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>
 
