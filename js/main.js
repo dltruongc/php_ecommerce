@@ -160,7 +160,6 @@ function decrement(id) {
 		totalPriceX.innerHTML = `${(parseInt(input.value) * priceX)}đ`;
 		totalPrice.innerHTML =  `${(parseInt(totalPrice.innerHTML) - priceX)}đ`;
 	}
-
 }
 
 function increment(id) {
