@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 
 include_once "consts.php";
 include "login_auth.php";

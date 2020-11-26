@@ -12,7 +12,7 @@ class NhomHangHoa
 
     public function themNhom($maNhom, $tenNhom)
     {
-        $q = "INSERT INTO NhomHanghoa VALUES ('$maNhom', '$tenNhom');";
+        $q = "INSERT INTO NhomHangHoa VALUES ('$maNhom', '$tenNhom');";
         $result = $this->conn->query($q);
         if (!result) {
             return ['Thêm nhóm thất bại'];
@@ -21,7 +21,7 @@ class NhomHangHoa
 
     public function xoaNhom($maNhom)
     {
-        $q = "DELETE FROM NhomHanghoa WHERE MaNhom = '$maNhom';";
+        $q = "DELETE FROM NhomHangHoa WHERE MaNhom = '$maNhom';";
         $result = $this->conn->query($q);
         if (!result) {
             return ['Xóa nhóm thất bại'];
@@ -30,7 +30,7 @@ class NhomHangHoa
 
     public function xemMaNhom()
     {
-        $q = "SELECT MaNhom FROM NhomHanghoa;";
+        $q = "SELECT `MaNhom` FROM `NhomHangHoa`;";
         $res = $this->conn->query($q);
         return $res->fetch_all();
     }

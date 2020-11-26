@@ -29,7 +29,7 @@ class HangHoa
     {
         $hinh = $this->xemHangHoa($maHH);
         $hinh = $hinh[0][5];
-        $path = ROOT_PATH . "/" . $hinh;
+        $path = ROOT_PATH . "/uploads/" . $hinh;
 
         // If the user file in existing directory already exist, delete it
         if (file_exists($path)) {

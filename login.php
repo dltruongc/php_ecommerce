@@ -131,7 +131,7 @@ if (isset($_POST["taikhoan"])) {
         <div class="col-sm-12 section-t8">
             <div class="row">
                 <div class="col-md-7">
-                    <form class="form-a contactForm" action="http://localhost/shop/login.php" method="post">
+                    <form class="form-a contactForm" action="login.php" method="post">
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">

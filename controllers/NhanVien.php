@@ -55,9 +55,9 @@ class NhanVien
 
     public function xemNhanVien($ma = null) {
         if ($ma == null) {
-            $q = "SELECT * FROM NHANVIEN ORDER BY MSNV DESC";
+            $q = "SELECT * FROM NhanVien ORDER BY MSNV DESC";
         } else {
-            $q = "SELECT * FROM NHANVIEN WHERE MSNV";
+            $q = "SELECT * FROM NhanVien WHERE MSNV";
         }
 
         $res = $this->conn->query($q);

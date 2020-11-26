@@ -1,6 +1,4 @@
 <?php
-ob_start();
-session_start();
 
 include "consts.php";
 include "login_auth.php";
@@ -12,7 +10,6 @@ $nhomHangHoa = new NhomHangHoa($conn);
 $maNhom = $nhomHangHoa->xemMaNhom();
 
 $err = array();
-
 if (isset($_POST["MSHH"])) {
 
     $type = null;
@@ -195,7 +192,7 @@ if (count($hh) == 0) {
         <div class="col-sm-12 section-t8">
             <div class="row">
                 <div class="col-md-7">
-                    <form class="form-a contactForm" action="http://localhost/shop/dashboard_product.php" method="post">
+                    <form class="form-a contactForm" action="dashboard_product.php" method="post">
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">
